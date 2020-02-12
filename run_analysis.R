@@ -1,6 +1,6 @@
 setwd("~/coursera/Project")
 
-# First we import all the datasets and name them with more intuitive names
+# First we import all the datasets.
 
 subject_train <- read.table("UCI HAR Dataset/train/subject_train.txt", header = F)
 activity_train <- read.table("UCI HAR Dataset/train/y_train.txt", header = F)
@@ -66,7 +66,9 @@ total$activity <- sub(6, "Laying", total$activity)
 library(dplyr)
 average <- total %>% group_by(activity, subject) %>% summarise_all(funs(mean))
 
+# Write data
 
+write.table(average,"getting_and_clean_data_project.txt", row.names = FALSE)
 
 
 
